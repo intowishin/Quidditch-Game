@@ -18,7 +18,7 @@ class Game {
   animate = () => {
     this.ctx.drawImage(this.background, 0, 0, this.canvas.width, this.canvas.height);
     this.player.draw();
-    // this.drawEverything();
+
     let gameId = requestAnimationFrame(this.animate);
 
     this.obstacles.forEach((obstacle, idx) => {
@@ -29,12 +29,16 @@ class Game {
     });
 
     this.frame++;
-    if (this.frame % 50 === 0) this.createObstacle();
 
+    if (this.frame % 50 === 0) {
+      this.createObstacle();
+    } 
   }
 
+
   createObstacle = () => {
-    this.obstacles.push(new Obstacle(this.canvas, this.ctx));
+    let obstacle = new Obstacle(this.canvas, this.ctx);
+    this.obstacles.push(obstacle);
   };
 
 
@@ -62,8 +66,6 @@ class Game {
   };
 
   drawEverything = () => {
-    this.frame++;
-    if (this.frame % 50 === 0) this.createObstacle();
     this.ctx.fillStyle = 'red';
     this.ctx.font = '50px Verdana';
     this.ctx.fillText(`Score: ${this.score}`, 10, 50);

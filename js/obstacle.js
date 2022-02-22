@@ -12,10 +12,10 @@ class Obstacle {
     this.image.src = "./images/malfoy.png";
 
     this.image.addEventListener("load", () => {
-      this.x = this.canvas.width / 2 - this.image.width / 4 / 2;
-      this.y = this.canvas.height - 100;
-      this.width = this.image.width / 4;
-      this.height = this.image.height / 4;
+      this.width = this.image.width / 3;
+      this.x = Math.floor(Math.random() * (this.canvas.width - this.width));
+      this.height = this.image.height / 3;
+      this.y = -this.height;
     });
   };
 
@@ -24,6 +24,6 @@ class Obstacle {
   };
 
   moveDown = () => {
-    this.y += 10;
+    this.y += 2;
   };
 }
