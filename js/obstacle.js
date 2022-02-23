@@ -3,12 +3,11 @@ class Obstacle {
     this.canvas = cvs;
     this.ctx = ctx;
     this.x = this.y = this.width = this.height = 0;
-    this.image = null;
+    this.image = new Image();
     this.initImage();
   }
 
   initImage = () => {
-    this.image = new Image();
     this.image.src = "./images/malfoy.png";
 
     this.image.addEventListener("load", () => {

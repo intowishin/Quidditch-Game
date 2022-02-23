@@ -30,7 +30,7 @@ class Game {
 
     this.frame++;
 
-    if (this.frame % 50 === 0) {
+    if (this.frame % 70 === 0) {
       this.createObstacle();
     } 
   }
