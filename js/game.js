@@ -86,7 +86,7 @@ class Game {
 
   endGame = (gameId) => {
     cancelAnimationFrame(gameId);
-    
+
     // this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
     // this.ctx.fillRect(
     //   0,
@@ -96,6 +96,7 @@ class Game {
     // );
     // this.ctx.fillStyle = "red";
     // this.ctx.fillText(`Game Over!!!`, 30, this.canvas.height / 2);
+    //hello
   };
 
   updateScore = (obstacle, idx) => {
