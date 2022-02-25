@@ -39,6 +39,17 @@ class Game {
     if (this.frame % 70 === 0) {
       this.createObstacle();
     }
+
+    this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    this.ctx.fillRect(
+      0,
+      this.canvas.height / 400,
+      this.canvas.width,
+      this.canvas.height / 25
+    );
+    this.ctx.fillStyle = "white";
+    this.ctx.font = "20px Harry Potter, sans-serif";
+    this.ctx.fillText(`Score: ${this.score}`, 10, 20);
   };
 
   createObstacle = () => {
@@ -75,15 +86,16 @@ class Game {
 
   endGame = (gameId) => {
     cancelAnimationFrame(gameId);
-    this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-    this.ctx.fillRect(
-      0,
-      this.canvas.height / 4,
-      this.canvas.width,
-      this.canvas.height / 2
-    );
-    this.ctx.fillStyle = "red";
-    this.ctx.fillText(`Game Over!!!`, 30, this.canvas.height / 2);
+    
+    // this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    // this.ctx.fillRect(
+    //   0,
+    //   this.canvas.height / 4,
+    //   this.canvas.width,
+    //   this.canvas.height / 2
+    // );
+    // this.ctx.fillStyle = "red";
+    // this.ctx.fillText(`Game Over!!!`, 30, this.canvas.height / 2);
   };
 
   updateScore = (obstacle, idx) => {
@@ -91,11 +103,5 @@ class Game {
       this.obstacles.splice(idx, 1);
       this.score++;
     }
-  };
-
-  drawEverything = () => {
-    this.ctx.fillStyle = "red";
-    this.ctx.font = "50px Verdana";
-    this.ctx.fillText(`Score: ${this.score}`, 10, 50);
   };
 }
