@@ -5,7 +5,7 @@ class Game {
     this.initBackground();
     this.player = new Player(this.canvas, this.ctx);
     this.obstacles = [];
-    this.lives = 3;
+    this.lives = 1;
     this.score = 0;
     this.frame = 0;
     this.animate();
@@ -42,7 +42,7 @@ class Game {
     }
 
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-    this.ctx.fillRect(
+    this.ctx.fillRect(  
       0,
       this.canvas.height / 400,
       this.canvas.width,
@@ -51,6 +51,7 @@ class Game {
     this.ctx.fillStyle = "white";
     this.ctx.font = "20px Harry Potter, sans-serif";
     this.ctx.fillText(`Score: ${this.score}`, 10, 20);
+    this.ctx.fillText("Lives: " + new String('🧹').repeat(Math.max(0, this.lives - 1)), this.canvas.width-100, 20);
   };
 
   createObstacle = () => {
@@ -94,7 +95,10 @@ class Game {
 
   endGame = (gameId) => {
     cancelAnimationFrame(gameId);
-    this.ctx.fillRect = "./images/slytherin.jpeg";
+    const gameOverImg = new Image();
+    gameOverImg.src = "./images/slytherin.jpeg";
+    gameOverImg.addEventListener("load", () => {
+    this.ctx.drawImage(gameOverImg, 0, 0, this.canvas.width, this.canvas.height);
     this.ctx.fillStyle = "#A80000";
     this.ctx.font = "50px Harry Potter, sans-serif";
     this.ctx.fillText(
@@ -102,5 +106,7 @@ class Game {
       this.canvas.width / 4,
       this.canvas.height / 4
     );
+    }) 
+ 
   };
 }
