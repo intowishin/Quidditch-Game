@@ -4,7 +4,7 @@ body {
 }
 
 .background {
-  background-image: url("/images/pitch1.jpeg");
+  background-image: url("/images/pitch.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.5;

@@ -5,7 +5,7 @@ class Game {
     this.initBackground();
     this.player = new Player(this.canvas, this.ctx);
     this.obstacles = [];
-    this.lives = 1;
+    this.lives = 3;
     this.score = 0;
     this.frame = 0;
     this.animate();
@@ -13,7 +13,7 @@ class Game {
 
   initBackground = () => {
     this.background = new Image();
-    this.background.src = "./images/pitch1.jpeg";
+    this.background.src = "./images/pitch.jpeg";
   };
 
   animate = () => {
@@ -42,7 +42,7 @@ class Game {
     }
 
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-    this.ctx.fillRect(  
+    this.ctx.fillRect(
       0,
       this.canvas.height / 400,
       this.canvas.width,
@@ -51,7 +51,11 @@ class Game {
     this.ctx.fillStyle = "white";
     this.ctx.font = "20px Harry Potter, sans-serif";
     this.ctx.fillText(`Score: ${this.score}`, 10, 20);
-    this.ctx.fillText("Lives: " + new String('🧹').repeat(Math.max(0, this.lives - 1)), this.canvas.width-100, 20);
+    this.ctx.fillText(
+      "Lives: " + new String("🧹").repeat(Math.max(0, this.lives - 1)),
+      this.canvas.width - 100,
+      20
+    );
   };
 
   createObstacle = () => {
@@ -96,17 +100,22 @@ class Game {
   endGame = (gameId) => {
     cancelAnimationFrame(gameId);
     const gameOverImg = new Image();
-    gameOverImg.src = "./images/slytherin.jpeg";
+    gameOverImg.src = "./images/gameOver.jpeg";
     gameOverImg.addEventListener("load", () => {
-    this.ctx.drawImage(gameOverImg, 0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.fillStyle = "#A80000";
-    this.ctx.font = "50px Harry Potter, sans-serif";
-    this.ctx.fillText(
-      `Game Over!!!`,
-      this.canvas.width / 4,
-      this.canvas.height / 4
-    );
-    }) 
- 
+      this.ctx.drawImage(
+        gameOverImg,
+        0,
+        0,
+        this.canvas.width,
+        this.canvas.height
+      );
+      this.ctx.fillStyle = "#A80000";
+      this.ctx.font = "50px Harry Potter, sans-serif";
+      this.ctx.fillText(
+        `Game Over`,
+        this.canvas.width / 3.5,
+        this.canvas.height / 7
+      );
+    });
   };
 }
