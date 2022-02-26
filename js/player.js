@@ -48,7 +48,6 @@ class Player {
     }
 
     this.x -= this.step;
-    this.draw();
   };
 
   moveRight = () => {
@@ -58,6 +57,5 @@ class Player {
     }
 
     this.x += this.step;
-    this.draw();
   };
 }

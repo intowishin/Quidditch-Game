@@ -5,7 +5,8 @@ class Game {
     this.initBackground();
     this.player = new Player(this.canvas, this.ctx);
     this.obstacles = [];
-    this.score = 10;
+    this.lives = 3;
+    this.score = 0;
     this.frame = 0;
     this.animate();
   }
@@ -31,7 +32,7 @@ class Game {
       obstacle.draw();
       obstacle.moveDown();
       this.checkCollision(obstacle, idx, gameId);
-      // this.updateScore(obstacle, idx);
+      this.checkObstaclePassesPlayer(obstacle, idx);
     });
 
     this.frame++;
@@ -75,12 +76,19 @@ class Game {
       player.bottom > obstacle.top &&
       obstacle.bottom > player.top
     ) {
-      this.score -= 10;
-      this.obstacles.splice(idx, 1);
+      this.lives--;
+      this.obstacles = [];
 
-      if (this.score === 0) {
+      if (this.lives === 0) {
         this.endGame(gameId);
       }
+    }
+  };
+
+  checkObstaclePassesPlayer = (obstacle, idx) => {
+    if (Math.floor(obstacle.y) === this.canvas.height) {
+      this.score += 100;
+      this.obstacles.splice(idx, 1);
     }
   };
 
@@ -94,12 +102,5 @@ class Game {
       this.canvas.width / 4,
       this.canvas.height / 4
     );
-  };
-
-  updateScore = (obstacle, idx) => {
-    if (obstacle.y > canvas.height) {
-      this.obstacles.splice(idx, 1);
-      this.score++;
-    }
   };
 }
