@@ -13,14 +13,18 @@ class Player {
    * Initialize the image of the player.
    */
   initImage = () => {
-    this.image = new Image();
-    this.image.src = "./images/harry.png";
+    this.imageRight = new Image();
+    this.imageRight.src = "./images/harryRight.png";
+    this.imageLeft = new Image();
+    this.imageLeft.src = "./images/harryLeft.png";
 
-    this.image.addEventListener("load", () => {
-      this.x = this.canvas.width / 2 - this.image.width / 4 / 2;
+    this.image = this.imageRight;
+
+    this.imageRight.addEventListener("load", () => {
+      this.x = this.canvas.width / 2 - this.imageRight.width / 4 / 2;
       this.y = this.canvas.height - 100;
-      this.width = this.image.width / 4;
-      this.height = this.image.height / 4;
+      this.width = this.imageRight.width / 4;
+      this.height = this.imageRight.height / 4;
     });
   };
 
@@ -42,6 +46,8 @@ class Player {
   };
 
   moveLeft = () => {
+    this.image = this.imageLeft;
+
     // Ensure we don't move off the canvas.
     if (this.x - this.step < 0) {
       return;
@@ -51,6 +57,8 @@ class Player {
   };
 
   moveRight = () => {
+    this.image = this.imageRight;
+
     // Ensure we don't move off the canvas.
     if (this.x >= this.canvas.width - this.width) {
       return;
