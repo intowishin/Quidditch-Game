@@ -64,6 +64,8 @@ class Game {
   };
 
   checkCollision = (obstacle, idx, gameId) => {
+    const margin = 10;
+
     const player = {};
     player.left = this.player.x;
     player.right = player.left + this.player.width;
@@ -76,10 +78,10 @@ class Game {
     obstacle.bottom = obstacle.top + obstacle.height;
 
     if (
-      player.right > obstacle.left &&
-      obstacle.right > player.left &&
+      player.right + margin > obstacle.left &&
+      obstacle.right > player.left + margin &&
       player.bottom > obstacle.top &&
-      obstacle.bottom > player.top
+      obstacle.bottom > player.top + margin
     ) {
       this.lives--;
       this.obstacles = [];
