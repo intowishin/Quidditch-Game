@@ -23,7 +23,7 @@ class Player {
     this.imageRight.addEventListener("load", () => {
       this.x = this.canvas.width / 2 - this.imageRight.width / 4 / 2;
       this.y = this.canvas.height - 100;
-      this.width = this.imageRight.width / 4;
+      this.width = this.imageRight.width / 5;
       this.height = this.imageRight.height / 4;
     });
   };
